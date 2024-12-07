@@ -3,7 +3,75 @@
 
  Wireshark is a powerful, open-source packet analyzer widely used by network professionals for monitoring, troubleshooting, and analyzing network traffic. It offers deep visibility into real-time data flows, supports a broad range of protocols, and provides an intuitive interface for filtering and inspecting packets. With Wireshark, users can quickly identify performance bottlenecks, uncover security vulnerabilities, and gain valuable insights into the intricate details of network communication.
 
-## Logical operators
+## List of contents
+- [Download and install](#download)
+- [Logical operators](#logical-operators)
+- [Capturing modes](#capturing-modes)
+- [Filtering types](#filtering-types)
+
+## <a name="download">Download and Instal Wireshark</a>
+### Windows
+1. Go to the [official Wireshark website](https://www.wireshark.org/download.html).
+2. Select the appropriate Windows installer (64-bit or 32-bit, typically 64-bit).
+3. Run the downloaded installer and follow the on-screen prompts.
+You can optionally install additional components like USBPcap for capturing USB traffic.
+4. Once the installation is complete, launch Wireshark from the Start menu.
+
+### macOS
+1. Visit the [Wireshark downloads page](https://www.wireshark.org/download.html).
+2. Download the macOS installer package (.dmg file).
+3. Open the downloaded .dmg file and drag the Wireshark icon into your `Applications` folder.
+4. Double-click Wireshark in `Applications` to start using it.
+If you encounter permissions issues, go to `System Preferences > Security & Privacy` and grant the necessary permissions.
+
+### Linux (Debian/Ubuntu-based)
+1. Open a terminal.
+2. Update your package list:
+   ```bash
+   sudo apt update -y
+   ```
+3. Install Wireshark:
+   ```bash
+   sudo apt install wireshark
+   ```
+4.	During installation, you may be prompted to allow non-superusers to capture packets. Select Yes if desired.
+5.	Launch Wireshark from the Applications menu or by typing wireshark in a terminal.
+
+### Linux (Fedora/CentOS/RHEL)
+1. Open a terminal.
+2. Update the DNF package repository information:
+   ```bash
+   sudo dnf updateinfo
+   ```
+3. Install Wireshark:
+   ```bash
+   sudo dnf install wireshark
+   ```
+(For older distributions, use yum instead of dnf.)
+4.	Run Wireshark from your Applications menu or by typing wireshark in a terminal.
+
+Tip: For additional installation details, visit the [official Wireshark documentation](https://www.wireshark.org/docs/). Depending on your platform, you may need to adjust permissions or group memberships to capture live network traffic without root privileges.
+
+
+### Linux (Arch-based)
+1. Open a terminal.
+2. Synchronize the database:
+   ```bash
+   sudo pacman -Sy
+   ```
+3. Update all installed packages to their latest versions:
+   ```bash
+   sudo pacman -Su
+   ```
+4. Install Wireshark:
+   ```bash
+   sudo pacman -S wireshark-qt
+   ```
+(Alternatively, install wireshark-cli for the CLI version.)
+5. Launch Wireshark from your Applications menu or by typing wireshark in a terminal.
+
+
+## <a name="logical-operators">Logical operators</a>
 | Operator          | Description                                     | Example                            |
 |-------------------|-------------------------------------------------|------------------------------------|
 | `and`            | Logical AND; both conditions must be true       | `ip.src == 192.168.1.1 and tcp`   |
@@ -18,7 +86,7 @@
 | `!=`             | Not equal to                                    | `ip.src != 192.168.1.1`           |
 
 
-## Capturing modes
+## <a name="captruting-modes">Capturing modes</a>
 | Capturing Mode       | Description                                                                                  | Example Use Case                             |
 |----------------------|----------------------------------------------------------------------------------------------|---------------------------------------------|
 | **Promiscuous Mode** | Captures all packets on the network segment, regardless of whether they are addressed to the capturing device. | Useful for analyzing network traffic at a broad level. |
@@ -31,7 +99,7 @@
 | **Capture in Background** | Runs the capture process without the GUI interface to reduce resource usage.             | Useful for remote or headless capturing.    |
 
 
-## Filtering types
+## <a name="filtering-types">Filtering types</a>
 | Filtering Type       | Description                                                                    | Example                                |
 |----------------------|--------------------------------------------------------------------------------|----------------------------------------|
 | **Display Filter**   | Filters packets after capture to refine the displayed results.                | `ip.src == 192.168.1.1 and tcp.port==80` |
@@ -44,4 +112,5 @@
 | **Logical Operators**| Combines multiple filters using logical operators such as `and`, `or`, `not`. | `tcp and not port 80`                  |
 | **Length Filter**    | Filters packets based on their length.                                        | `frame.len > 1000`                     |
 | **Time Filter**      | Filters packets based on capture time ranges.                                 | `frame.time >= "2023-12-01 10:00:00"`  |
+
 
