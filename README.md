@@ -10,6 +10,8 @@
 - [Filtering types](#filtering-types)
 
 ## <a name="download">Download and Instal Wireshark</a>
+![Download Wireshark](/imgs/download.jpg)
+
 ### Windows
 1. Go to the [official Wireshark website](https://www.wireshark.org/download.html).
 2. Select the appropriate Windows installer (64-bit or 32-bit, typically 64-bit).
